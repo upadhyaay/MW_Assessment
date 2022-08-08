@@ -1,0 +1,9 @@
+---
+# configuration of ports for firewall 
+- name: firewall port configuration
+  command:
+    cmd: 
+      - firewall-cmd --permanent --zone=public --add-service=http
+      - firewall-cmd --permanent --zone=public --add-service=https
+      - systemctl restart firewalld
+  become: true  

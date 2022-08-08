@@ -1,0 +1,34 @@
+---
+# tasks file for mysql_db
+
+- name: Start Mariadb
+  command:
+    cmd: systemctl start mariadb
+  become: true
+
+- name: secure mysql installation
+  command:
+    cmd: mysql_secure_installation
+  become: true
+
+- name: login into mysql client
+  command:
+    cmd: mysql -u root -p
+
+- name: Create a new database with name {{db_name}}
+  mysql_db:
+    name: "{{db_name}}"
+    state: present
+
+- name: Create database user with name {{db_user}} and password ******* with all database privileges
+  mysql_user:
+    name: "{{db_user}}"
+    password: "{{db_pass}}"
+    priv: '*.*:ALL'
+    state: present
+
+- name: show databases
+  command:
+    cmd: 
+    - SHOW DATABASES
+    - SHOW GRANTS FOR "{{db_user}}"

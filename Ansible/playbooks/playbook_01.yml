@@ -1,0 +1,10 @@
+- name: Playbook for configuring server with mediawiki
+  gather_facts: True
+  hosts: app_server
+  roles:
+    - Xampp
+    - os_packages
+    - mysql_db
+    - service
+    - MediaWiki
+    - configuration

@@ -1,0 +1,11 @@
+---
+## post installation configuration tasks and steps.
+
+- name: Apache configuration post install 
+  import_tasks: apache.yml
+
+- name: Firewall configuration
+  import_tasks: firewall.yml
+
+- name: Security (Selinux) configuration
+  import_tasks: selinux.yml

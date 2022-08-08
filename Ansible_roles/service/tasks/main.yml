@@ -1,0 +1,7 @@
+---
+# tasks to Auto Start Apache and MySQL on boot in RHEL > 8.*
+- name: Restart service, in all cases
+  command:
+    cmd: 
+      - sudo systemctl enable mariadb
+      - sudo systemctl enable httpd

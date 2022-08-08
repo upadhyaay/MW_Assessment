@@ -1,0 +1,27 @@
+---
+# Install Mediawiki tarball, unziping and verifying the file thereafter
+- name: Downloading Content from {{mediawiki_url}}
+  get_url:
+    url: "{{mediawiki_url}}"
+    dest: "{{wget_dest}}"
+    mode: 0755
+- name : Download GPG signature for the tarball
+  command:
+    cmd: wget "{{mediawiki_gpg_url}}"
+    path: "{{wget_dest}}"
+
+- name: verify the tarball integrity
+  command: 
+    cmd: gpg --verify mediawiki-1.38.2.tar.gz.sig mediawiki-1.38.2.tar.gz
+    path: "{{wget_dest}}"
+
+- name: Extract Mediawiki zip file from {{unarchive_src}} into {{unarchive_dest}}
+  command:
+    cmd: tar -zxf {{wget_dest}}/mediawiki-1.38.2.tar.gz
+  become: true
+  ignore_errors: true
+
+- name: Creating symbolic link
+  command:
+    cmd: ln -s mediawiki-1.38.2/ mediawiki
+  become: true  

@@ -1,0 +1,12 @@
+---
+# Webserver (Apache) post-install configuration steps and commands.
+
+- name: Change ownership
+  command:
+    cmd: chown -R apache:apache /var/www/mediawiki
+  become: true
+
+- name: restart apache service
+  command:
+    cmd: service httpd restart
+  become: true

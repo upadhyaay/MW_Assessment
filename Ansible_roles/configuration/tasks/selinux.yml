@@ -1,0 +1,14 @@
+---
+# Security (selinux) configuration
+
+- name: check if Selinux package is installed                    # by default installed in rhel 
+  command:
+    cmd: getenforce
+  register: output
+
+- name: 
+  command:
+    cmd:
+     - restorecon -FR /var/www/mediawiki-1.38.2/
+     - restorecon -FR /var/www/mediawiki
+  when: output.stdout == 'enforcing'

@@ -1,0 +1,7 @@
+---
+- name: Installing OS based packages for RHEL version > 8.*
+  command:
+    cmd: 
+      - dnf module reset php
+      - dnf module enable php:7.4
+      - dnf install httpd php php-mysqlnd php-gd php-xml mariadb-server mariadb php-mbstring php-json mod_ssl php-intl php-apcu

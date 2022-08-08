@@ -1,0 +1,10 @@
+db_name: mw_db
+db_user: mw_user
+db_pass: mw_password
+username: azureuser
+xampp_url: "https://downloadsapachefriends.global.ssl.fastly.net/8.1.6/xampp-linux-x64-8.1.6-0-installer.run"
+mediawiki_url: "https://releases.wikimedia.org/mediawiki/1.38/mediawiki-1.38.2.tar.gz"
+mediawiki_gpg_url: "https://releases.wikimedia.org/mediawiki/1.38/mediawiki-1.38.2.tar.gz.sig"
+wget_dest: "/home/{{username}}"
+unarchive_src: "/home/{{username}}"
+unarchive_dest: "/var/www/"

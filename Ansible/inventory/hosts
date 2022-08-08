@@ -1,0 +1,2 @@
+[app_server]
+sample123 ansible_host=<Put the I.P. address>

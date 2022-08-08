@@ -1,0 +1,21 @@
+# tasks file for chmod
+- name: Download Xampp package using wget
+  command:
+    cmd: wget {{xampp_url}}
+
+- name: Changing permissions
+  command:
+    cmd: chmod 755 xampp-linux-*-installer.run
+
+- name: Install the xampp
+  command:
+    cmd: sudo ./xampp-linux-*-installer.run
+
+- name: Start the Xampp service
+  command:   
+    cmd: sudo /opt/lampp/lampp start
+
+## keeping commented for the time being.
+# - name: Stop the Xampp service
+#    command:
+#     cmd: sudo /opt/lampp/lampp stop
